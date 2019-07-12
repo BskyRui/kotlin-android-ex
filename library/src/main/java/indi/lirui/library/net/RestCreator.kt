@@ -5,12 +5,11 @@ import indi.lirui.library.global.Mall
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import retrofit2.create
 import java.util.concurrent.TimeUnit
 
 
 // 创建Retrofit实例
-class RestCreator {
+object RestCreator {
 
     private object OkHttpHolder {
         private const val TIME_OUT = 60
@@ -36,6 +35,7 @@ class RestCreator {
             .create(RestService::class.java)
     }
 
+    // 自定义getter属性, 每次访问的时候从 RestServiceHolder.REST_SERVICE 获取
     val restService: RestService get() = RestServiceHolder.REST_SERVICE
 
 }
